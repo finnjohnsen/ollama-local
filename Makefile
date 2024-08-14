@@ -14,9 +14,10 @@ os-check-sanity:
 		echo "MacOS"; \
 	fi
 
+# remove -d to prevent detach
 run-server:
 	-mkdir -p ${HOME}/.ollama-workdir
-	${DOCKER} run --rm  --device nvidia.com/gpu=all -v ${HOME}/.ollama-workdir:/root/.ollama -p 11434:11434 --name ollama ollama/ollama:0.3.5 
+	${DOCKER} run -d --rm  --device nvidia.com/gpu=all -v ${HOME}/.ollama-workdir:/root/.ollama -p 11434:11434 --name ollama ollama/ollama:0.3.5 
 
 # watch GPU (Linux)
 w-gpu:

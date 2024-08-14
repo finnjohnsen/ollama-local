@@ -1,6 +1,13 @@
-# podman
+# What is this?
 
-må bruke nvidia CDI (Container Device Interface).
+Just a Makefile keeping container commands for ollama stuff.
 
-> CDI is an open specification for container runtimes that abstracts what access to a device, such as an NVIDIA GPU, means, and standardizes access across container runtimes. Popular container runtimes can read and process the specification to ensure that a device is available in a container. CDI simplifies adding support for devices such as NVIDIA GPUs because the specification is applicable to all container runtimes that support CDI.
+# How?
 
+First run the server. Note: It starts with no model loaded.
+
+``` make run-server ```
+
+Start a shell requesting a model, for instance the llama3.1 model
+
+``` make llama ```

@@ -15,9 +15,12 @@ os-check-sanity:
 	fi
 
 # remove -d to prevent detach
-run-server:
+run:
 	-mkdir -p ${HOME}/.ollama-workdir
 	${DOCKER} run -d --rm  --device nvidia.com/gpu=all -v ${HOME}/.ollama-workdir:/root/.ollama -p 11434:11434 --name ollama ollama/ollama:0.3.5 
+
+logs:
+	${DOCKER} logs -f ollama
 
 # watch GPU (Linux)
 w-gpu:
@@ -48,3 +51,6 @@ codellama7b:
 
 codellama13b:
 	${DOCKER} exec -it ollama ollama run codellama:13b
+
+list:
+	@grep '^[^#[:space:]].*:' Makefile
